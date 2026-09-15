@@ -310,6 +310,29 @@
         "Battery": {"Type": "Non-removable", "Charging": "120W wired fast charging"},
         "Misc": {"Colors": "Check retailer for available colors in Malaysia", "Price": "About RM 1,599 (Malaysia)"}
       }
+    },
+      ,
+  {
+    "id": "samsung-galaxy-a55-5g",
+    "name": "Samsung Galaxy A55 5G",
+    "brand": "Samsung",
+    "type": "phone",
+    "image": "",
+    "price_myr": 1699,
+    "year": 2024,
+    "specs": {
+      "display": "6.6-inch Super AMOLED, 120Hz, FHD+",
+      "processor": "Exynos 1480",
+      "ram": "8GB",
+      "storage": "128GB / 256GB",
+      "rear_camera": "50MP + 12MP + 5MP",
+      "front_camera": "32MP",
+      "battery": "5000mAh, 25W charging",
+      "os": "Android 14, One UI 6.1",
+      "5g": true,
+      "dimensions": "161.1 x 77.4 x 8.2 mm",
+      "weight": "213g"
     }
+  }
   ]
-}
+
