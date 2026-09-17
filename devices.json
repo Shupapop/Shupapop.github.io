@@ -334,5 +334,72 @@
       "weight": "213g"
     }
   }
+      ,
+  {
+    "id": "apple-iphone-18-pro",
+    "name": "Apple iPhone 18 Pro",
+    "brand": "Apple",
+    "type": "phone",
+    "image": "",
+    "price_myr": 5499,
+    "year": 2026,
+    "specs": {
+      "display": "6.3-inch Super Retina XDR OLED, 120Hz ProMotion",
+      "processor": "Apple A20 Pro (2nm)",
+      "ram": "12GB",
+      "storage": "256GB / 512GB / 1TB",
+      "rear_camera": "48MP main + 48MP ultrawide + 48MP periscope telephoto",
+      "front_camera": "24MP TrueDepth",
+      "battery": "3,800mAh, 30W wired charging",
+      "os": "iOS 19",
+      "5g": true,
+      "dimensions": "149.6 x 71.5 x 8.2 mm",
+      "weight": "199g"
+    }
+  },
+  {
+    "id": "apple-iphone-18-pro-max",
+    "name": "Apple iPhone 18 Pro Max",
+    "brand": "Apple",
+    "type": "phone",
+    "image": "",
+    "price_myr": 5999,
+    "year": 2026,
+    "specs": {
+      "display": "6.9-inch Super Retina XDR OLED, 120Hz ProMotion",
+      "processor": "Apple A20 Pro (2nm)",
+      "ram": "12GB",
+      "storage": "256GB / 512GB / 1TB",
+      "rear_camera": "48MP main + 48MP ultrawide + 48MP periscope telephoto (10x optical zoom)",
+      "front_camera": "24MP TrueDepth",
+      "battery": "5,000mAh, 30W wired charging",
+      "os": "iOS 19",
+      "5g": true,
+      "dimensions": "163.0 x 77.6 x 8.2 mm",
+      "weight": "227g"
+    }
+  },
+  {
+    "id": "apple-iphone-18",
+    "name": "Apple iPhone 18",
+    "brand": "Apple",
+    "type": "phone",
+    "image": "",
+    "price_myr": 4199,
+    "year": 2026,
+    "specs": {
+      "display": "6.1-inch Super Retina XDR OLED, 60Hz",
+      "processor": "Apple A19 (3nm)",
+      "ram": "8GB",
+      "storage": "128GB / 256GB / 512GB",
+      "rear_camera": "48MP main + 12MP ultrawide",
+      "front_camera": "12MP TrueDepth",
+      "battery": "3,500mAh, 25W wired charging",
+      "os": "iOS 19",
+      "5g": true,
+      "dimensions": "147.6 x 71.6 x 7.8 mm",
+      "weight": "174g"
+    }
+  }
   ]
 
