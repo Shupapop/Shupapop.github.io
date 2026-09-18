@@ -401,5 +401,72 @@
       "weight": "174g"
     }
   }
+    ,
+  {
+    "id": "xiaomi-14t",
+    "name": "Xiaomi 14T",
+    "brand": "Xiaomi",
+    "type": "phone",
+    "image": "",
+    "price_myr": 2299,
+    "year": 2024,
+    "specs": {
+      "display": "6.67-inch AMOLED, 144Hz, FHD+",
+      "processor": "MediaTek Dimensity 8300 Ultra",
+      "ram": "12GB",
+      "storage": "256GB / 512GB",
+      "rear_camera": "50MP Leica + 50MP ultrawide + 50MP telephoto",
+      "front_camera": "32MP",
+      "battery": "5000mAh, 67W charging",
+      "os": "Android 14, HyperOS",
+      "5g": true,
+      "dimensions": "160.5 x 75.1 x 7.8 mm",
+      "weight": "193g"
+    }
+  },
+  {
+    "id": "realme-13-pro-plus",
+    "name": "Realme 13 Pro+",
+    "brand": "Realme",
+    "type": "phone",
+    "image": "",
+    "price_myr": 1699,
+    "year": 2024,
+    "specs": {
+      "display": "6.7-inch AMOLED, 120Hz, FHD+",
+      "processor": "Snapdragon 7s Gen 3",
+      "ram": "12GB",
+      "storage": "256GB / 512GB",
+      "rear_camera": "50MP Sony IMX890 + 50MP periscope telephoto + 8MP ultrawide",
+      "front_camera": "32MP",
+      "battery": "5000mAh, 80W charging",
+      "os": "Android 14, Realme UI 5.0",
+      "5g": true,
+      "dimensions": "161.8 x 74.2 x 8.2 mm",
+      "weight": "190g"
+    }
+  },
+  {
+    "id": "vivo-v40",
+    "name": "Vivo V40",
+    "brand": "Vivo",
+    "type": "phone",
+    "image": "",
+    "price_myr": 2199,
+    "year": 2024,
+    "specs": {
+      "display": "6.78-inch AMOLED, 120Hz, FHD+",
+      "processor": "Snapdragon 7 Gen 3",
+      "ram": "12GB",
+      "storage": "256GB",
+      "rear_camera": "50MP ZEISS + 50MP ultrawide + 50MP telephoto",
+      "front_camera": "50MP",
+      "battery": "5500mAh, 80W charging",
+      "os": "Android 14, Funtouch OS 14",
+      "5g": true,
+      "dimensions": "164.3 x 75.0 x 7.6 mm",
+      "weight": "190g"
+    }
+  }
   ]
 
