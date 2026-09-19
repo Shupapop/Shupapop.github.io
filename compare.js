@@ -22,16 +22,32 @@ async function renderComparePage() {
     return;
   }
 
-  // Helper: normalize any device's specs into flat { category: { key: value } } format
+  // Normalize any device format into { Category: { key: value } }
   function normalizeSpecs(d) {
-    if (!d.specs) return {};
-    const firstVal = Object.values(d.specs)[0];
-    if (typeof firstVal === 'object' && firstVal !== null) {
-      // Already nested format — return as-is
-      return d.specs;
+    // Format A & B: has d.specs
+    if (d.specs) {
+      const firstVal = Object.values(d.specs)[0];
+      if (typeof firstVal === 'object' && firstVal !== null) {
+        // Format A: nested { Network: { Technology: '...' } }
+        return d.specs;
+      } else {
+        // Format B: flat { display: '...', processor: '...' }
+        return { 'Specifications': d.specs };
+      }
     }
-    // Flat format — wrap everything under one "Specifications" category
-    return { 'Specifications': d.specs };
+    // Format C: specs are top-level fields — pick known spec keys
+    const specKeys = ['display', 'processor', 'ram', 'storage', 'camera', 'battery', 'os', 'connectivity'];
+    const flat = {};
+    specKeys.forEach(k => { if (d[k]) flat[k] = d[k]; });
+    return { 'Specifications': flat };
+  }
+
+  // Get price from any format
+  function getPrice(d) {
+    if (d.price_my) return d.price_my;
+    if (d.price_myr) return 'RM ' + d.price_myr.toLocaleString();
+    if (d.price) return 'RM ' + d.price.toLocaleString();
+    return '—';
   }
 
   // Collect all spec categories & keys across picked devices
@@ -47,7 +63,7 @@ async function renderComparePage() {
   });
 
   let html = `<tr><th>Spec</th>${picked.map(d => `<th>${d.name}</th>`).join('')}</tr>`;
-  html += `<tr><td>Price (MY)</td>${picked.map(d => `<td>${d.price_my || '—'}</td>`).join('')}</tr>`;
+  html += `<tr><td>Price (MY)</td>${picked.map(d => `<td>${getPrice(d)}</td>`).join('')}</tr>`;
 
   Object.entries(allCats).forEach(([cat, keysSet]) => {
     html += `<tr><td colspan="${picked.length + 1}" style="background:var(--ink);color:var(--amber);font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:0.05em;">${cat}</td></tr>`;
