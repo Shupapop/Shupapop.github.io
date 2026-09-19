@@ -17,20 +17,46 @@ async function renderDevicePage() {
 
   document.getElementById('pageTitle').textContent = `${d.name} — full specifications | SpecShelf`;
 
-  const quickHTML = Object.entries(d.quickspec).map(([k, v]) => `
-    <div class="quickspec-item">
-      <div class="quickspec-label">${k}</div>
-      <div class="quickspec-value">${v}</div>
-    </div>`).join('');
+  // QUICKSPEC: support both old format (object) and new format (flat specs fallback)
+  let quickHTML = '';
+  if (d.quickspec && typeof d.quickspec === 'object') {
+    quickHTML = Object.entries(d.quickspec).map(([k, v]) => `
+      <div class="quickspec-item">
+        <div class="quickspec-label">${k}</div>
+        <div class="quickspec-value">${v}</div>
+      </div>`).join('');
+  } else if (d.specs && typeof d.specs === 'object') {
+    // New flat format — show first 4 entries as quickspec
+    quickHTML = Object.entries(d.specs).slice(0, 4).map(([k, v]) => `
+      <div class="quickspec-item">
+        <div class="quickspec-label">${k}</div>
+        <div class="quickspec-value">${v}</div>
+      </div>`).join('');
+  }
 
   const ratingsHTML = d.ratings ? Object.entries(d.ratings).map(([k, v]) =>
     ratingRow(k.charAt(0).toUpperCase() + k.slice(1), v)).join('') : '';
 
-  const specTablesHTML = Object.entries(d.specs).map(([cat, rows]) => `
-    <div class="spec-cat">${cat}</div>
-    <table class="spec-table">
-      ${Object.entries(rows).map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('')}
-    </table>`).join('');
+  // SPECS TABLE: support both old nested format and new flat format
+  let specTablesHTML = '';
+  if (d.specs && typeof d.specs === 'object') {
+    const firstVal = Object.values(d.specs)[0];
+    if (typeof firstVal === 'object' && firstVal !== null) {
+      // Old format: nested { category: { key: value } }
+      specTablesHTML = Object.entries(d.specs).map(([cat, rows]) => `
+        <div class="spec-cat">${cat}</div>
+        <table class="spec-table">
+          ${Object.entries(rows).map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('')}
+        </table>`).join('');
+    } else {
+      // New format: flat { key: value }
+      specTablesHTML = `
+        <div class="spec-cat">Specifications</div>
+        <table class="spec-table">
+          ${Object.entries(d.specs).map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('')}
+        </table>`;
+    }
+  }
 
   const inCompare = getCompareList().includes(d.id);
 
