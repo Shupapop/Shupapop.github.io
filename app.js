@@ -93,7 +93,7 @@ async function renderCompareTray() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderDeviceGrid('popularGrid', d => d.type === 'phone');
+    renderDeviceGrid('popularGrid', d => d.type === 'phone' || d.type === 'Phone');
   renderCompareTray();
 
   const searchInput = document.querySelector('.search-input, [placeholder*="Search"]');
