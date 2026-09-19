@@ -36,8 +36,25 @@ function signalBars(level) {
   return `<span class="signal-rating" data-level="${level}"><span></span><span></span><span></span><span></span><span></span></span>`;
 }
 
+function getDevicePrice(d) {
+  if (d.price_my) return d.price_my;
+  if (d.price) return 'RM ' + d.price.toLocaleString();
+  return '';
+}
+
+function getDeviceQuickspec(d) {
+  if (d.quickspec) return Object.entries(d.quickspec).map(([k, v]) => `${k}: ${v}`).join(' · ');
+  const parts = [];
+  if (d.display) parts.push(d.display);
+  if (d.processor) parts.push(d.processor);
+  if (d.ram) parts.push(d.ram + ' RAM');
+  if (d.battery) parts.push(d.battery);
+  return parts.slice(0, 3).join(' · ');
+}
+
 function deviceCardHTML(d) {
-   const qs = d.quickspec ? Object.entries(d.quickspec).map(([k, v]) => `${k}: ${v}`).join(' · ') : '';
+  const qs = getDeviceQuickspec(d);
+  const price = getDevicePrice(d);
   const inCompare = getCompareList().includes(d.id);
   return `
   <div class="device-card">
@@ -45,7 +62,7 @@ function deviceCardHTML(d) {
       <div class="device-thumb">${d.img ? `<img src="${d.img}" alt="${d.name}">` : 'No image'}</div>
       <div class="device-name">${d.name}</div>
       <div class="device-quickspec">${qs}</div>
-      <div class="device-price">${d.price_my}</div>
+      <div class="device-price">${price}</div>
     </a>
     <label class="compare-check">
       <input type="checkbox" ${inCompare ? 'checked' : ''} onchange="toggleCompare('${d.id}')">
@@ -64,35 +81,32 @@ async function renderDeviceGrid(targetId, filterFn) {
 
 async function renderCompareTray() {
   const tray = document.getElementById('compareTray');
+  if (!tray) return;
   const slotsEl = document.getElementById('traySlots');
-  if (!tray || !slotsEl) return;
   const list = getCompareList();
-  if (!list.length) { tray.classList.remove('active'); return; }
   const devices = await loadDevices();
   slotsEl.innerHTML = list.map(id => {
     const d = devices.find(x => x.id === id);
-    if (!d) return '';
-    return `<div class="compare-slot">${d.name}<span class="x" onclick="toggleCompare('${id}')">×</span></div>`;
+    return d ? `<span>${d.name}</span>` : '';
   }).join('');
-  tray.classList.add('active');
-}
-
-function setupSearch() {
-  const input = document.getElementById('searchInput');
-  if (!input) return;
-  input.addEventListener('input', async (e) => {
-    const q = e.target.value.trim().toLowerCase();
-    if (!q) { renderDeviceGrid('deviceGrid'); return; }
-    await loadDevices();
-    renderDeviceGrid('deviceGrid', d =>
-      d.name.toLowerCase().includes(q) || d.brand.toLowerCase().includes(q)
-    );
-  });
+  tray.style.display = list.length ? 'flex' : 'none';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderDeviceGrid('deviceGrid');
-  renderDeviceGrid('popularGrid', d => ['iphone-17-pro', 'samsung-galaxy-s26-ultra'].includes(d.id));
+  renderDeviceGrid('popularGrid', d => d.type === 'phone');
   renderCompareTray();
-  setupSearch();
+
+  const searchInput = document.querySelector('.search-input, [placeholder*="Search"]');
+  if (searchInput) {
+    searchInput.addEventListener('input', async e => {
+      const q = e.target.value.toLowerCase();
+      const devices = await loadDevices();
+      const filtered = devices.filter(d =>
+        d.name.toLowerCase().includes(q) ||
+        (d.brand && d.brand.toLowerCase().includes(q))
+      );
+      const grid = document.getElementById('popularGrid');
+      if (grid) grid.innerHTML = filtered.map(deviceCardHTML).join('');
+    });
+  }
 });
