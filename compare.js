@@ -22,22 +22,40 @@ async function renderComparePage() {
     return;
   }
 
+  // Helper: normalize any device's specs into flat { category: { key: value } } format
+  function normalizeSpecs(d) {
+    if (!d.specs) return {};
+    const firstVal = Object.values(d.specs)[0];
+    if (typeof firstVal === 'object' && firstVal !== null) {
+      // Already nested format — return as-is
+      return d.specs;
+    }
+    // Flat format — wrap everything under one "Specifications" category
+    return { 'Specifications': d.specs };
+  }
+
   // Collect all spec categories & keys across picked devices
   const allCats = {};
   picked.forEach(d => {
-    Object.entries(d.specs).forEach(([cat, rows]) => {
+    const normalized = normalizeSpecs(d);
+    Object.entries(normalized).forEach(([cat, rows]) => {
       allCats[cat] = allCats[cat] || new Set();
-      Object.keys(rows).forEach(k => allCats[cat].add(k));
+      if (rows && typeof rows === 'object') {
+        Object.keys(rows).forEach(k => allCats[cat].add(k));
+      }
     });
   });
 
   let html = `<tr><th>Spec</th>${picked.map(d => `<th>${d.name}</th>`).join('')}</tr>`;
-  html += `<tr><td>Price (MY)</td>${picked.map(d => `<td>${d.price_my}</td>`).join('')}</tr>`;
+  html += `<tr><td>Price (MY)</td>${picked.map(d => `<td>${d.price_my || '—'}</td>`).join('')}</tr>`;
 
   Object.entries(allCats).forEach(([cat, keysSet]) => {
     html += `<tr><td colspan="${picked.length + 1}" style="background:var(--ink);color:var(--amber);font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:0.05em;">${cat}</td></tr>`;
     Array.from(keysSet).forEach(key => {
-      const values = picked.map(d => (d.specs[cat] && d.specs[cat][key]) || '—');
+      const values = picked.map(d => {
+        const normalized = normalizeSpecs(d);
+        return (normalized[cat] && normalized[cat][key]) || '—';
+      });
       const differs = new Set(values).size > 1;
       html += `<tr class="${differs ? 'compare-diff' : ''}"><td>${key}</td>${values.map(v => `<td>${v}</td>`).join('')}</tr>`;
     });
