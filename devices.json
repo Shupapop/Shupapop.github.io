@@ -311,7 +311,6 @@
         "Misc": {"Colors": "Check retailer for available colors in Malaysia", "Price": "About RM 1,599 (Malaysia)"}
       }
     },
-      ,
   {
     "id": "samsung-galaxy-a55-5g",
     "name": "Samsung Galaxy A55 5G",
@@ -333,8 +332,7 @@
       "dimensions": "161.1 x 77.4 x 8.2 mm",
       "weight": "213g"
     }
-  }
-      ,
+  },
   {
     "id": "apple-iphone-18-pro",
     "name": "Apple iPhone 18 Pro",
@@ -400,8 +398,7 @@
       "dimensions": "147.6 x 71.6 x 7.8 mm",
       "weight": "174g"
     }
-  }
-    ,
+  },
   {
     "id": "xiaomi-14t",
     "name": "Xiaomi 14T",
@@ -467,7 +464,7 @@
       "dimensions": "164.3 x 75.0 x 7.6 mm",
       "weight": "190g"
     }
-  }
+  },
     {
   "id": "samsung-galaxy-s25",
   "name": "Samsung Galaxy S25",
@@ -563,7 +560,7 @@
   "os": "Android 14, Funtouch OS 14",
   "connectivity": "5G, Wi-Fi 6, Bluetooth 5.4",
   "releaseYear": 2024
-}
+},
     {
   "id": "honor-600",
   "name": "Honor 600",
@@ -611,6 +608,6 @@
   "os": "Android 15, MagicOS 9",
   "connectivity": "5G, Wi-Fi 6E, Bluetooth 5.3",
   "releaseYear": 2025
-}
-  ]
-
+        }
+      ]
+    }
