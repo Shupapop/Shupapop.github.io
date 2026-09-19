@@ -37,7 +37,7 @@ function signalBars(level) {
 }
 
 function deviceCardHTML(d) {
-  const qs = Object.entries(d.quickspec).map(([k, v]) => `${k}: ${v}`).join(' · ');
+   const qs = d.quickspec ? Object.entries(d.quickspec).map(([k, v]) => `${k}: ${v}`).join(' · ') : '';
   const inCompare = getCompareList().includes(d.id);
   return `
   <div class="device-card">
