@@ -38,7 +38,8 @@ function signalBars(level) {
 
 function getDevicePrice(d) {
   if (d.price_my) return d.price_my;
-  if (d.price) return 'RM ' + d.price.toLocaleString();
+  if (d.price_myr) return 'RM ' + Number(d.price_myr).toLocaleString();
+  if (d.price) return 'RM ' + Number(d.price).toLocaleString();
   return '';
 }
 
@@ -49,7 +50,7 @@ function getDeviceQuickspec(d) {
   if (d.processor) parts.push(d.processor);
   if (d.ram) parts.push(d.ram + ' RAM');
   if (d.battery) parts.push(d.battery);
-  return parts.slice(0, 3).join(' · ');
+  return parts.slice(0, 3).join(' · ') || 'Specs coming soon';
 }
 
 function deviceCardHTML(d) {
@@ -93,7 +94,7 @@ async function renderCompareTray() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderDeviceGrid('popularGrid', null);
+  renderDeviceGrid('popularGrid', null);
   renderCompareTray();
 
   const searchInput = document.querySelector('.search-input, [placeholder*="Search"]');
