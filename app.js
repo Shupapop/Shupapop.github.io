@@ -44,13 +44,31 @@ function getDevicePrice(d) {
 }
 
 function getDeviceQuickspec(d) {
+  // Format A: has quickspec object
   if (d.quickspec) return Object.entries(d.quickspec).map(([k, v]) => `${k}: ${v}`).join(' · ');
-  const parts = [];
-  if (d.display) parts.push(d.display);
-  if (d.processor) parts.push(d.processor);
-  if (d.ram) parts.push(d.ram + ' RAM');
-  if (d.battery) parts.push(d.battery);
-  return parts.slice(0, 3).join(' · ') || 'Specs coming soon';
+
+  // Format C: specs at top level (e.g. Samsung A35, Honor 600)
+  if (d.display || d.processor) {
+    const parts = [];
+    if (d.display) parts.push(d.display);
+    if (d.processor) parts.push(d.processor);
+    if (d.ram) parts.push(d.ram + ' RAM');
+    if (d.battery) parts.push(d.battery);
+    return parts.slice(0, 3).join(' · ');
+  }
+
+  // Format B: flat specs inside d.specs object (e.g. Xiaomi 14T, iPhone 18 Pro)
+  if (d.specs) {
+    const s = d.specs;
+    const parts = [];
+    if (s.display) parts.push(s.display);
+    if (s.processor) parts.push(s.processor);
+    if (s.ram) parts.push(s.ram + ' RAM');
+    if (s.battery) parts.push(s.battery);
+    return parts.slice(0, 3).join(' · ');
+  }
+
+  return 'Specs coming soon';
 }
 
 function deviceCardHTML(d) {
