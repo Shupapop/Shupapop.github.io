@@ -1,8 +1,5 @@
 // ===== SpecShelf shared app logic =====
 // Data source: devices.json (local sample data).
-// To go live with a real feed, replace loadDevices() with a fetch()
-// call to a licensed spec API (e.g. mobileapi.dev) and map its
-// response shape onto the same fields used below.
 
 let DEVICES = [];
 
@@ -45,7 +42,6 @@ function getDevicePrice(d) {
 
 function getDeviceQuickspec(d) {
   if (d.quickspec) return Object.entries(d.quickspec).map(([k, v]) => `${k}: ${v}`).join(' · ');
-
   if (d.display || d.processor) {
     const parts = [];
     if (d.display) parts.push(d.display);
@@ -54,7 +50,6 @@ function getDeviceQuickspec(d) {
     if (d.battery) parts.push(d.battery);
     return parts.slice(0, 3).join(' · ');
   }
-
   if (d.specs) {
     const s = d.specs;
     const parts = [];
@@ -64,38 +59,36 @@ function getDeviceQuickspec(d) {
     if (s.battery) parts.push(s.battery);
     return parts.slice(0, 3).join(' · ');
   }
-
   return 'Specs coming soon';
 }
 
+var BRAND_COLORS = {
+  'Apple':   { bg: '#f5f5f7', icon: '#1d1d1f', text: '#6e6e73', label: 'APPLE' },
+  'Samsung': { bg: '#e8f0fe', icon: '#1428a0', text: '#1428a0', label: 'SAMSUNG' },
+  'Xiaomi':  { bg: '#fff0f0', icon: '#ff6900', text: '#cc5400', label: 'XIAOMI' },
+  'Honor':   { bg: '#e8f5e9', icon: '#006633', text: '#006633', label: 'HONOR' },
+  'Vivo':    { bg: '#ede7f6', icon: '#415fff', text: '#415fff', label: 'VIVO' },
+  'Oppo':    { bg: '#e3f2fd', icon: '#1a73e8', text: '#1a73e8', label: 'OPPO' },
+  'OPPO':    { bg: '#e3f2fd', icon: '#1a73e8', text: '#1a73e8', label: 'OPPO' },
+  'Realme':  { bg: '#fff3e0', icon: '#f4a200', text: '#cc8800', label: 'REALME' },
+  'POCO':    { bg: '#fffde7', icon: '#f9a825', text: '#f57f17', label: 'POCO' },
+};
+
+function getBrandColor(brand) {
+  return BRAND_COLORS[brand] || { bg: '#f0f0f0', icon: '#888888', text: '#666666', label: (brand || '?').toUpperCase() };
+}
+
+function makePlaceholder(brand) {
+  var c = getBrandColor(brand);
+  var initial = (brand || '?').charAt(0).toUpperCase();
+  return '<div style="width:100%;height:100%;background:' + c.bg + ';display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">'
+    + '<div style="width:48px;height:48px;border-radius:12px;background:' + c.icon + ';display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:500;color:#fff;">' + initial + '</div>'
+    + '<span style="font-size:11px;font-weight:500;letter-spacing:0.5px;color:' + c.text + ';">' + c.label + '</span>'
+    + '</div>';
+}
+
 function deviceThumbHTML(d) {
-  const brandColors = {
-    'Apple':   { bg: '#f5f5f7', icon: '#1d1d1f', text: '#6e6e73', label: 'APPLE' },
-    'Samsung': { bg: '#e8f0fe', icon: '#1428a0', text: '#1428a0', label: 'SAMSUNG' },
-    'Xiaomi':  { bg: '#fff0f0', icon: '#ff6900', text: '#cc5400', label: 'XIAOMI' },
-    'Honor':   { bg: '#e8f5e9', icon: '#006633', text: '#006633', label: 'HONOR' },
-    'Vivo':    { bg: '#ede7f6', icon: '#415fff', text: '#415fff', label: 'VIVO' },
-    'Oppo':    { bg: '#e3f2fd', icon: '#1a73e8', text: '#1a73e8', label: 'OPPO' },
-    'OPPO':    { bg: '#e3f2fd', icon: '#1a73e8', text: '#1a73e8', label: 'OPPO' },
-    'Realme':  { bg: '#fff3e0', icon: '#f4a200', text: '#cc8800', label: 'REALME' },
-    'POCO':    { bg: '#fff8e1', icon: '#ffcc00', text: '#997700', label: 'POCO' },
-  };
-  const c = brandColors[d.brand] || { bg: '#f0f0f0', icon: '#888888', text: '#666666', label: (d.brand || '?').toUpperCase() };
-  const initial = (d.brand || '?').charAt(0).toUpperCase();
-
-  const placeholder = `<div style="width:100%;height:100%;background:${c.bg};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
-    <div style="width:48px;height:48px;border-radius:12px;background:${c.icon};display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:500;color:#fff;">${initial}</div>
-    <span style="font-size:11px;font-weight:500;letter-spacing:0.5px;color:${c.text};">${c.label}</span>
-  </div>`;
-
-  if (d.img) {
-    return `<img src="${d.img}" alt="${d.name}"
-      style="width:100%;height:100%;object-fit:contain;padding:8px;"
-      onerror="this.style.display='none';this.parentElement.innerHTML='${placeholder.replace(/'/g, "\\'").replace(/\n/g, '')}'"
-    >`;
-  }
-
-  return placeholder;
+  return makePlaceholder(d.brand);
 }
 
 function deviceCardHTML(d) {
