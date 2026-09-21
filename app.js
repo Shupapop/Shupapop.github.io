@@ -71,6 +71,12 @@ function getDeviceQuickspec(d) {
   return 'Specs coming soon';
 }
 
+function deviceThumbHTML(d) {
+  if (!d.img) return '<div class="device-thumb-placeholder">No image</div>';
+  return `<img src="${d.img}" alt="${d.name}" style="width:100%;height:100%;object-fit:contain;"
+    onerror="this.parentElement.innerHTML='<div class=\\'device-thumb-placeholder\\'>No image</div>'">`;
+}
+
 function deviceCardHTML(d) {
   const qs = getDeviceQuickspec(d);
   const price = getDevicePrice(d);
@@ -78,7 +84,7 @@ function deviceCardHTML(d) {
   return `
   <div class="device-card">
     <a href="device.html?id=${d.id}" style="display:flex;flex-direction:column;gap:8px;flex:1;">
-      <div class="device-thumb">${d.img ? `<img src="${d.img}" alt="${d.name}">` : 'No image'}</div>
+      <div class="device-thumb">${deviceThumbHTML(d)}</div>
       <div class="device-name">${d.name}</div>
       <div class="device-quickspec">${qs}</div>
       <div class="device-price">${price}</div>
