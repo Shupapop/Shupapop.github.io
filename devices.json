@@ -667,6 +667,102 @@
         "Battery": {"Type": "Li-Po 5000 mAh, non-removable", "Charging": "67W wired, 100% in 45 min"},
         "Misc": {"Colors": "Black, Yellow, Grey", "Price": "About RM 1,199 (Malaysia)"}
       }
+    },
+    {
+      "id": "asus-rog-phone-9",
+      "brand": "ASUS",
+      "name": "ASUS ROG Phone 9",
+      "type": "Phone",
+      "released": "2024, December",
+      "status": "Available",
+      "img": "https://www.asus.com/media/global/gallery/oqfijkmptrzrymfe_setting_000_1_90_end_500.png",
+      "price_my": "RM 3,999",
+      "price_global": "Regional pricing varies — check local ASUS store",
+      "quickspec": {"Display": "6.78\" AMOLED, 185Hz", "Chipset": "Snapdragon 8 Elite", "RAM": "12GB", "Battery": "5,800 mAh"},
+      "ratings": {"performance": 5, "battery": 5, "display": 5, "value": 4},
+      "specs": {
+        "Network": {"Technology": "GSM / HSPA / LTE / 5G"},
+        "Body": {"Dimensions": "173.6 x 77.1 x 8.9 mm", "Weight": "227 g", "Build": "Aluminum frame, Corning Gorilla Glass Victus 2"},
+        "Display": {"Type": "AMOLED, 185Hz, 2500 nits peak", "Size": "6.78 inches", "Resolution": "1080 x 2400 pixels"},
+        "Platform": {"OS": "Android 15, ROG UI", "Chipset": "Qualcomm Snapdragon 8 Elite", "CPU": "Octa-core", "GPU": "Adreno 830"},
+        "Memory": {"Card slot": "No", "Internal": "256GB 12GB RAM"},
+        "Main Camera": {"Triple": "50MP main + 13MP ultrawide + 32MP macro"},
+        "Selfie Camera": {"Single": "32 MP, f/2.0"},
+        "Battery": {"Type": "Li-Po 5800 mAh, non-removable", "Charging": "65W wired"},
+        "Misc": {"Colors": "Phantom Black", "Price": "About RM 3,999 (Malaysia)"}
+      }
+    },
+    {
+      "id": "asus-rog-phone-9-pro",
+      "brand": "ASUS",
+      "name": "ASUS ROG Phone 9 Pro",
+      "type": "Phone",
+      "released": "2024, December",
+      "status": "Available",
+      "img": "https://www.asus.com/media/global/gallery/oqfijkmptrzrymfe_setting_000_1_90_end_500.png",
+      "price_my": "RM 4,999",
+      "price_global": "Regional pricing varies — check local ASUS store",
+      "quickspec": {"Display": "6.78\" AMOLED, 185Hz", "Chipset": "Snapdragon 8 Elite", "RAM": "16GB", "Battery": "5,800 mAh"},
+      "ratings": {"performance": 5, "battery": 5, "display": 5, "value": 4},
+      "specs": {
+        "Network": {"Technology": "GSM / HSPA / LTE / 5G"},
+        "Body": {"Dimensions": "173.6 x 77.1 x 8.9 mm", "Weight": "227 g", "Build": "Aluminum frame, Corning Gorilla Glass Victus 2"},
+        "Display": {"Type": "AMOLED, 185Hz, 2500 nits peak", "Size": "6.78 inches", "Resolution": "1080 x 2400 pixels"},
+        "Platform": {"OS": "Android 15, ROG UI", "Chipset": "Qualcomm Snapdragon 8 Elite", "CPU": "Octa-core", "GPU": "Adreno 830"},
+        "Memory": {"Card slot": "No", "Internal": "512GB 16GB RAM"},
+        "Main Camera": {"Triple": "50MP main + 13MP ultrawide + 32MP macro"},
+        "Selfie Camera": {"Single": "32 MP, f/2.0"},
+        "Battery": {"Type": "Li-Po 5800 mAh, non-removable", "Charging": "65W wired"},
+        "Misc": {"Colors": "Phantom Black", "Price": "About RM 4,999 (Malaysia)"}
+      }
+    },
+    {
+      "id": "poco-f7-ultra",
+      "brand": "POCO",
+      "name": "POCO F7 Ultra",
+      "type": "Phone",
+      "released": "2025, March",
+      "status": "Available",
+      "img": "https://i02.appmifile.com/mi-com-product/fly-birds/poco-x6-pro/M/img/poco-x6-pro-kv.png",
+      "price_my": "RM 2,999",
+      "price_global": "Regional pricing varies — check local POCO store",
+      "quickspec": {"Display": "6.67\" AMOLED, 120Hz", "Chipset": "Snapdragon 8 Elite", "RAM": "12GB", "Battery": "5,300 mAh"},
+      "ratings": {"performance": 5, "battery": 5, "display": 5, "value": 5},
+      "specs": {
+        "Network": {"Technology": "GSM / HSPA / LTE / 5G"},
+        "Body": {"Dimensions": "160.3 x 74.8 x 8.4 mm", "Weight": "212 g", "Build": "Glass front and back, aluminum frame, IP68"},
+        "Display": {"Type": "AMOLED, 120Hz, 2K resolution, 3200 nits peak", "Size": "6.67 inches", "Resolution": "1440 x 3200 pixels"},
+        "Platform": {"OS": "HyperOS 2 (Android 15)", "Chipset": "Qualcomm Snapdragon 8 Elite", "CPU": "Octa-core", "GPU": "Adreno 830"},
+        "Memory": {"Card slot": "No", "Internal": "256GB 12GB RAM, 512GB 16GB RAM"},
+        "Main Camera": {"Triple": "50MP main (OIS) + 50MP telephoto (2.5x) + 32MP ultrawide"},
+        "Selfie Camera": {"Single": "32 MP, f/2.0"},
+        "Battery": {"Type": "Li-Po 5300 mAh, non-removable", "Charging": "120W wired, 100% in approx. 23 min"},
+        "Misc": {"Colors": "Black, White", "Price": "About RM 2,999 (Malaysia)"}
+      }
+    },
+    {
+      "id": "poco-f7-pro",
+      "brand": "POCO",
+      "name": "POCO F7 Pro",
+      "type": "Phone",
+      "released": "2025, March",
+      "status": "Available",
+      "img": "https://i02.appmifile.com/mi-com-product/fly-birds/poco-x6-pro/M/img/poco-x6-pro-kv.png",
+      "price_my": "RM 2,299",
+      "price_global": "Regional pricing varies — check local POCO store",
+      "quickspec": {"Display": "6.67\" AMOLED, 120Hz", "Chipset": "Snapdragon 8 Gen 3", "RAM": "12GB", "Battery": "6,000 mAh"},
+      "ratings": {"performance": 5, "battery": 5, "display": 4, "value": 5},
+      "specs": {
+        "Network": {"Technology": "GSM / HSPA / LTE / 5G"},
+        "Body": {"Dimensions": "160.4 x 74.8 x 8.2 mm", "Weight": "209 g", "Build": "Glass front and back, aluminum frame"},
+        "Display": {"Type": "AMOLED, 120Hz, FHD+", "Size": "6.67 inches", "Resolution": "1080 x 2400 pixels"},
+        "Platform": {"OS": "HyperOS 2 (Android 15)", "Chipset": "Qualcomm Snapdragon 8 Gen 3", "CPU": "Octa-core", "GPU": "Adreno 750"},
+        "Memory": {"Card slot": "No", "Internal": "256GB 12GB RAM, 512GB 12GB RAM"},
+        "Main Camera": {"Dual": "50MP main + 8MP ultrawide"},
+        "Selfie Camera": {"Single": "20 MP, f/2.2"},
+        "Battery": {"Type": "Li-Po 6000 mAh, non-removable", "Charging": "90W wired"},
+        "Misc": {"Colors": "Black, White, Purple", "Price": "About RM 2,299 (Malaysia)"}
+      }
     }
   ]
 }
